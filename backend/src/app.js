@@ -11,6 +11,13 @@ const PORT = 3000;
 // Permite ao Express receber JSON enviado pelo front-end.
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.json({
+    mensagem: "API OK"
+  });
+  res.send("API Send");
+});
+
 app.use("/api/produtos", produtoRoutes);
 
 app.use("/api/ia", iaRoutes);

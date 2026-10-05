@@ -17,6 +17,12 @@ const produtos = [
     nome: "Teclado",
     descricao: "Teclado para computador",
     preco: 120
+  },
+    {
+    id: 3,
+    nome: "Teclado",
+    descricao: "Teclado para computador",
+    preco: 120
   }
 ];
 

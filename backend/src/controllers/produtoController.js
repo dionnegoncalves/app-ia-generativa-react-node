@@ -15,7 +15,7 @@ function cadastrarProduto(req, res) {
 
   const novoProduto = {
     id: produtos.length > 0 ? produtos[produtos.length - 1].id + 1 : 1,
-    nome,
+    nome: nome,
     descricao: descricao || "",
     preco: Number(preco)
   };
@@ -25,23 +25,20 @@ function cadastrarProduto(req, res) {
   res.status(201).json(novoProduto);
 }
 
+function alterarProduto(req, res) {
 
-
-
-function alterarProduto(req, res){
-
-  const id = Number(req.params.id) 
+  const id = Number(req.params.id)
   const { nome, descricao, preco } = req.body;
 
   const produto = produtos.find(produto => produto.id === id)
 
-  if(!produto){
+  if (!produto) {
     return res.status(404).json({
       mensagem: 'Produto não encontrado'
-    })  
+    })
   }
 
-  if(!nome || !preco === undefined){      
+  if (!nome || !preco === undefined) {
     return res.status(400).json({
       mensagem: 'Nome e preço são obrigatórios.'
     });
@@ -56,19 +53,18 @@ function alterarProduto(req, res){
 }
 
 
-function excluirProduto(req, res){
+function excluirProduto(req, res) {
 
-  const id = Number(req.params.id) 
+  const id = Number(req.params.id)
 
   const indice = produtos.findIndex(produto => produto.id === id)
 
-  if(indice === -1){
+  if (indice === -1) {
 
     return res.status(404).json({
       mensagem: 'Produto não encontrado.'
     })
   }
-
 
   produtos.splice(indice, 1)
 
